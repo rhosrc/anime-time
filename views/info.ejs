@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+
+<body>
+    <%- include('./partials/navbar.ejs') %>
+    <main>
+        <h1><%= title.title%></h1>
+        <img src="<%= title.image_url%>" alt="">
+        <p><%= title.type%></p>
+        <p><%= title.rated%></p>
+        <p><%= title.synopsis%><a href="<%= title.url%>">Visit MyAnimeList</a></p>
+        <form action="/profile" method="POST">
+            <input type="submit" value="Add to List">
+        </form>
+        <p><a href="/search">Back to Search</a></p>
+    </main>
+    <%- include('./partials/footer.ejs') %>
+</body>
+
+</html>

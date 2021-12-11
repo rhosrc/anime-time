@@ -1,8 +1,39 @@
 body {
     background-color: yellow;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 main {
+    display: flex;
     flex-grow: 1;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    
+    /* flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-between;
+    align-items: center; */
 }
 
+.form-inline {
+    display: flex;
+}
+
+.card {
+margin-top: 25px;
+    width: 300px;
+    
+    text-align: center;
+}
+
+.poster {
+    object-fit: cover;
+    width: 300px;
+    height: 300px;
+}
+
+footer {
+    text-align: center;
+}

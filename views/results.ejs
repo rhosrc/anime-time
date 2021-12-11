@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+<body>
+    <%- include('./partials/navbar.ejs') %>
+    <main>
+      <% for (let i=0; i < results.length; i++) { %>
+          <div class="card">
+            <h3><a href="/<%= results[i].title%>"><%= results[i].title%></a></h3>
+            <h4><%= results[i].type%></h4>
+            <p><%= results[i].episodes%> episodes</p>
+            <img class="poster" src="<%= results[i].image_url%>" alt="">
+        </div>
+        
+      <% } %>
+    </main>
+    <%- include('./partials/footer.ejs') %>
+</body>
+</html>
