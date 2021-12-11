@@ -5,7 +5,7 @@ body {
     flex-direction: column;
 }
 
-main {
+main #home, main #search {
     display: flex;
     flex-grow: 1;
     flex-wrap: wrap;

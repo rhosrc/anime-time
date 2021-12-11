@@ -19,6 +19,10 @@ let foundTitle;
 
 // HOME (SEARCH TITLES)
 
+
+
+
+
 // INDEX
 collectedRouter.get('/', function (req, res, next) {
     res.render('home.ejs');
@@ -36,6 +40,19 @@ collectedRouter.get('/search', function (req, res, next) {
 
 })
 
+// Nested Resource Routes
+
+collectedRouter.post('/profile/:id/reviews', async function (req, res){
+    // find the title we need to make a review for
+    const title = await Title.findById(req.params.id);
+    // insert req.body(our review) into the review array for the found title
+    title.reviews.push(req.body);
+    // save the current state of the book document
+    await title.save();
+    // redirect back to the client
+    res.redirect(`profile/${title._id}`);
+})
+
 collectedRouter.get('/profile', function (req, res) {
     Title.find({}, function (error, allTitles) {
         res.render('profile.ejs', {
@@ -51,8 +68,29 @@ collectedRouter.delete('/profile/:id', function (req, res) {
     })
 })
 
-collectedRouter.get('/profile/:id', function (req, res){
-    Title.findById(req.params.id, function (error, foundTitle){
+collectedRouter.put('/profile/:id', function (req, res) {
+    Title.findByIdAndUpdate(
+        req.params.id,
+        req.body, {
+            new: true,
+        },
+        function (error, updatedTitle) {
+            res.redirect(`/profile/${req.params.id}`)
+        })
+        
+})
+
+
+collectedRouter.get('/profile/:id/edit', function (req, res) {
+    Title.findById(req.params.id, function (error, foundTitle) {
+        res.render('edit.ejs', {
+            title: foundTitle
+        })
+    })
+})
+
+collectedRouter.get('/profile/:id', function (req, res) {
+    Title.findById(req.params.id, function (error, foundTitle) {
         res.render('show.ejs', {
             title: foundTitle
         })
@@ -69,8 +107,6 @@ collectedRouter.get('/:id', function (req, res) {
     res.render('info.ejs', {
         title: foundTitle
     });
-    // console.log(foundTitle);
-    // res.render('show.ejs', {title: animeInfo}) 
 })
 
 

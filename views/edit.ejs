@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+    <body>
+        <%- include('./partials/navbar.ejs') %>
+        <main>
+    <h1>Edit Title</h1>
+    <form action="/profile/<%= title._id%>?_method=PUT" method="POST">
+        <input type="hidden" name="mal_id" value="<%= title.mal_id%>"><br>
+        <input type="hidden" name="url" value="<%= title.url%>"><br>
+        <input type="hidden" name="image_url" value="<%= title.image_url%>"><br>
+        <input type="hidden" name="title" value="<%= title.title%>"><br>
+        <input type="hidden" name="airing" value="<%= title.airing%>"><br>
+        <input type="hidden" name="synopsis" value="<%= title.synopsis%>"><br>
+        <input type="hidden" name="type" value="<%= title.type%>"><br>
+        <input type="hidden" name="episodes" value="<%= title.episodes%>"><br>
+        <input type="hidden" name="score" value="<%= title.score%>"><br>
+        <input type="hidden" name="start_date" value="<%= title.start_date%>"><br>
+        <input type="hidden" name="end_date" value="<%= title.end_date%>"><br>
+        <input type="hidden" name="members" value="<%= title.members%>"><br>
+        <input type="hidden" name="rated" value="<%= title.rated%>"><br>
+        <input type="hidden" name="reviewed" value="<%= title.reviewed%>"><br>
+        Episodes Completed: <input type="text" name="epsfinished" value="<%= title.epsfinished%>"><br>
+        <input type="submit" value="Submit Changes">
+    </form>
+</body>
+</html>

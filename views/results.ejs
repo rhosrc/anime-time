@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('./partials/head.ejs') %>
+<%- include('./partials/head.ejs') %>
+
 <body>
-    <%- include('./partials/navbar.ejs') %>
-    <main>
+  <%- include('./partials/navbar.ejs') %>
+  <main>
+    <div id="search">
       <% for (let i=0; i < results.length; i++) { %>
-          <div class="card">
-            <h3><a href="/<%= results[i].title%>"><%= results[i].title%></a></h3>
-            <h4><%= results[i].type%></h4>
-            <p><%= results[i].episodes%> episodes</p>
-            <img class="poster" src="<%= results[i].image_url%>" alt="">
-        </div>
-        
+      <div class="card">
+        <h3><a href="/<%= results[i].title%>"><%= results[i].title%></a></h3>
+        <h4><%= results[i].type%></h4>
+        <p><%= results[i].episodes%> episodes aired</p>
+        <% if (results[i].airing === true) { %>
+        <p>Still Airing</p>
+        <% } else { %>
+        <p>Completed <%= results[i].end_date%></p>
+        <% } %>
+        <img class="poster" src="<%= results[i].image_url%>" alt="">
+      </div>
+
       <% } %>
-    </main>
-    <%- include('./partials/footer.ejs') %>
+    </div>
+  </main>
+  <%- include('./partials/footer.ejs') %>
 </body>
+
 </html>

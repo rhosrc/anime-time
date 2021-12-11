@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<%- include('./partials/head.ejs') %>
+
 <body>
-    <h1><%= title.title%></h1>
+    <%- include('./partials/navbar.ejs') %>
+    <main>
+        <h1><%= title.title%></h1>
+        <p><%= title.epsfinished%> episodes of <%= title.episodes%> completed</p>
+        <form style="display: inline; margin-right: 1rem;" action="/profile/<%= title._id%>?_method=DELETE"
+            method="POST">
+            <input type="submit" value="DELETE">
+        </form>
+        <a style="margin: 0 1rem 0 1rem;" href="/profile/<%= title._id %>/edit">EDIT</a>
+        <p><a href="/search">Back to Search</a></p>
+        <p><a href="/profile">Back to Profile</a></p>
+        <form action="/profile/<%= title._id%>/reviews" method="POST">
+            <select name="rating" id="">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <textarea name="text">
+
+        </textarea>
+            <input type="submit" value="Add Review">
+        </form>
+        <% if (title.reviews.length > 0) { %>
+        <h3>Current Reviews</h3>
+        <% for (let i=0; i < title.reviews.length; i++) { %>
+        <p><%= title.reviews[i].text%> - Rating: <%= title.reviews[i].rating %></p>
+        <% } %>
+        <% } else { %>
+        <h3>No Reviews</h3>
+        <% } %>
 </body>
+
 </html>
