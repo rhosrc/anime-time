@@ -50,7 +50,7 @@ collectedRouter.post('/profile/:id/reviews', async function (req, res){
     // save the current state of the book document
     await title.save();
     // redirect back to the client
-    res.redirect(`profile/${title._id}`);
+    res.redirect(`/profile/${title._id}`);
 })
 
 collectedRouter.get('/profile', function (req, res) {

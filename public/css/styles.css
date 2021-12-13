@@ -1,16 +1,29 @@
 body {
-    background-color: yellow;
+    background-color: #f0efef;
     height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-main #home, main #search {
+nav {
+    padding: 0 50px;
+}
+
+main {
+    margin: 50px;
+}
+
+main h1 {
+    margin-bottom: 25px;
+}
+
+main #home,
+main #search {
     display: flex;
     flex-grow: 1;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    
+
     /* flex-direction: row;
     flex-wrap: wrap;
     align-content: space-between;
@@ -22,10 +35,17 @@ main #home, main #search {
 }
 
 .card {
-margin-top: 25px;
+    margin-top: 25px;
     width: 300px;
-    
+    display: flex;
+    justify-content: space-between;
+    border-radius: 25px;
     text-align: center;
+}
+
+.card img {
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
 }
 
 .poster {
@@ -34,6 +54,83 @@ margin-top: 25px;
     height: 300px;
 }
 
-footer {
+.info-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 75%;
+    margin: 0 auto 50px;;
+}
+
+.info-div img {
+    margin-right: 50px;
+    height: 400px;
+}
+
+.info {
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: space-between;
+    align-items: center; */
+    font-size: 1.25rem;
     text-align: center;
+}
+
+.saved {
+    background-color: lightsteelblue;
+    margin-bottom: 50px;
+    padding: 25px;
+}
+
+.saved img {
+width: 100px;
+height: 100px;
+float: left;
+object-fit: cover;
+margin-right: 50px;
+}
+
+.reviews {
+    text-align: center;
+}
+
+.reviews input {
+display: block;
+margin: 0 auto 50px;
+}
+
+.reviews textarea {
+    width: 500px;
+    height: 200px;
+}
+
+.reviews select {
+    display: block;
+    margin: 0 auto 25px;
+}
+
+.current-reviews h3 {
+    margin-bottom: 50px;
+}
+
+footer {
+    padding: 25px 0;
+    text-align: center;
+    background-color: #bbcfff;
+}
+
+@media screen and (max-width: 420px) {
+    main {
+        text-align: center;
+    }
+
+    .info-div {
+        display: initial;
+    }
+
+    /* .info-div image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    } */
 }
