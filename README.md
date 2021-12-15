@@ -36,6 +36,10 @@ An app for browsing anime titles and tracking episode completion!
 
 Welcome to Anime Time! Click the link to get started. (https://immense-badlands-72751.herokuapp.com/)
 
+To begin, enter the name of an anime title (movie, OVA, film, etc.) in the navbar's search field. You will see a number of title cards with basic information (# of episodes, release type, date completed). Click on one to learn more about it and add it to your profile, i.e. your personal watch list!
+
+You can also write personal notes about the series as you move through it.
+
 ## Stretch Goals
 
-I would like to revise the CSS and make it more mobile-friendly. I'd also like to add a sign-in feature so users can access their private watchlists.
+I would like to revise the CSS and make it more mobile-friendly. I'd also like to add a sign-in feature so users can access their private watch lists and notes.
