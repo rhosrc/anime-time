@@ -6,8 +6,8 @@
         <main>
     <h1>Edit Title</h1>
     <form action="/profile/<%= title._id%>?_method=PUT" method="POST">
-        Episodes Completed: <input type="text" name="epsfinished" value="<%= title.epsfinished%>"><br>
-        <input type="submit" value="Submit Changes">
+        Episodes Completed: <input type="text" name="epsfinished" class="eps" value="<%= title.epsfinished%>"><br>
+        <input class="btn btn-success" type="submit" value="Submit Changes">
         <input type="hidden" name="mal_id" value="<%= title.mal_id%>"><br>
         <input type="hidden" name="url" value="<%= title.url%>"><br>
         <input type="hidden" name="image_url" value="<%= title.image_url%>"><br>

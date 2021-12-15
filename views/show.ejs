@@ -12,11 +12,11 @@
                 <p><%= title.epsfinished%> episodes of <%= title.episodes%> completed</p>
                 <form style="display: inline; margin-right: 1rem;" action="/profile/<%= title._id%>?_method=DELETE"
                     method="POST">
-                    <input type="submit" value="DELETE SERIES">
+                    <input class="btn btn-danger" type="submit" value="DELETE SERIES">
                 </form>
-                <a style="margin: 0 1rem 0 1rem;" href="/profile/<%= title._id %>/edit">EDIT</a>
-                <p><a href="/search">Back to Search</a></p>
-                <p><a href="/profile">Back to Profile</a></p>
+                <a class="btn btn-secondary" style="margin: 0 1rem 0 1rem;" href="/profile/<%= title._id %>/edit">EDIT</a>
+                <p class="back"><a class="btn btn-secondary" href="/search">Back to Search</a></p>
+                <p><a class="btn btn-primary" href="/profile">Back to Profile</a></p>
             </div>
         </div>
 

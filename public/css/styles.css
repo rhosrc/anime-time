@@ -76,6 +76,18 @@ main #search {
     text-align: center;
 }
 
+.info form{
+margin-bottom: 25px;
+}
+
+form .eps {
+    margin-bottom: 50px;
+}
+
+.back {
+    margin-top: 25px;
+}
+
 .saved {
     background-color: lightsteelblue;
     margin-bottom: 50px;

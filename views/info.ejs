@@ -14,9 +14,9 @@
                 <p>Rated <strong><%= title.rated%></strong></p>
                 <p><%= title.synopsis%><a href="<%= title.url%>">Visit MyAnimeList</a></p>
                 <form action="/profile" method="POST">
-                    <input type="submit" value="Add to List">
+                    <input class="btn btn-success" type="submit" value="Add to List">
                 </form>
-                <p><a href="/search">Back to Search</a></p>
+                <p><a class="btn btn-secondary" href="/search">Back to Search</a></p>
             </div>
         </div>
 

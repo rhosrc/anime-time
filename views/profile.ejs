@@ -13,12 +13,12 @@
             <p><%= titles[i].epsfinished%> episodes of <%= titles[i].episodes%> completed</p>
             <form style="display: inline; margin-right: 1rem;" action="/profile/<%= titles[i]._id%>?_method=DELETE"
                 method="POST">
-                <input type="submit" value="DELETE">
+                <input class="btn btn-danger" type="submit" value="DELETE">
             </form>
-            <a style="margin: 0 1rem 0 1rem;" href="/profile/<%= titles[i]._id %>/edit">EDIT</a>
+            <a class="btn btn-secondary" style="margin: 0 1rem 0 1rem;" href="/profile/<%= titles[i]._id %>/edit">EDIT</a>
         </div>
         <% } %>
-        <p><a href="/search">Back to Search</a></p>
+        <p><a class="btn btn-light" href="/search">Back to Search</a></p>
     </main>
     <%- include('./partials/footer.ejs') %>
 </body>
