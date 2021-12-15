@@ -7,9 +7,9 @@ An app for browsing anime titles and tracking episode completion!
 -HTML 5 \
 -CSS3 \
 -JavaScript \
--Bootstrap 5.1.3
--Node.js, Express, Mongoose
--MongoDB
+-Bootstrap 5.1.3 \
+-Node.js, Express, Mongoose \
+-MongoDB \
 -Jikan MyAnimeList API (https://jikan.docs.apiary.io/#)
 
 ## Screenshots
