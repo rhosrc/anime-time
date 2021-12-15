@@ -38,7 +38,7 @@ Welcome to Anime Time! Click the link to get started. (https://immense-badlands-
 
 To begin, enter the name of an anime title (movie, OVA, film, etc.) in the navbar's search field. You will see a number of title cards with basic information (# of episodes, release type, date completed). Click on one to learn more about it and add it to your profile, i.e. your personal watch list!
 
-You can also write personal notes about the series as you move through it.
+You can also update the number of episodes/installments you've completed and write personal notes about the series as you move through it.
 
 ## Stretch Goals
 
