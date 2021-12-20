@@ -1,6 +1,6 @@
 body {
     background-color: #f0efef;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -11,6 +11,7 @@ nav {
 
 main {
     margin: 50px;
+    flex: 1;
 }
 
 main h1 {
@@ -20,7 +21,7 @@ main h1 {
 main #home,
 main #search {
     display: flex;
-    flex-grow: 1;
+    /* flex-grow: 1; */
     flex-wrap: wrap;
     justify-content: space-evenly;
 

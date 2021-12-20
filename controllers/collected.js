@@ -47,7 +47,7 @@ collectedRouter.post('/profile/:id/reviews', async function (req, res){
     const title = await Title.findById(req.params.id);
     // insert req.body(our review) into the review array for the found title
     title.reviews.push(req.body);
-    // save the current state of the book document
+    // save the current state of the title
     await title.save();
     // redirect back to the client
     res.redirect(`/profile/${title._id}`);
@@ -100,7 +100,7 @@ collectedRouter.get('/profile/:id', function (req, res) {
 
 
 
-collectedRouter.get('/:id', function (req, res) {
+collectedRouter.get('/search/:id', function (req, res) {
     foundTitle = animeInfo.find(e => {
         return e.title === req.params.id;
     })
@@ -121,8 +121,6 @@ collectedRouter.post('/profile', function (req, res) {
 // NEW
 
 // DELETE
-
-
 
 // UPDATE
 

@@ -9,19 +9,19 @@
             <img src="<%= title.image_url%>" alt="">
             <div class="info">
                 <h1><%= title.title%></h1>
-                <p><%= title.epsfinished%> episodes of <%= title.episodes%> completed</p>
+                <p><%= title.epsfinished%> episodes of <%= title.episodes%> watched</p>
                 <form style="display: inline; margin-right: 1rem;" action="/profile/<%= title._id%>?_method=DELETE"
                     method="POST">
                     <input class="btn btn-danger" type="submit" value="DELETE SERIES">
                 </form>
                 <a class="btn btn-secondary" style="margin: 0 1rem 0 1rem;" href="/profile/<%= title._id %>/edit">EDIT</a>
-                <p class="back"><a class="btn btn-secondary" href="/search">Back to Search</a></p>
+                <p class="back"><a class="btn btn-outline-dark" href="/search">Back to Search</a></p>
                 <p><a class="btn btn-primary" href="/profile">Back to Profile</a></p>
             </div>
         </div>
 
         <div class="reviews">
-            <h3>Write Your Review Here!</h3>
+            <h3>Write Your Notes Here!</h3>
             <form action="/profile/<%= title._id%>/reviews" method="POST">
                 <textarea name="text"></textarea>
                 <select name="rating" id="">
@@ -34,11 +34,11 @@
 
 
                 </textarea>
-                <input type="submit" value="Add Review">
+                <input class="btn btn-success"type="submit" value="Add Review">
             </form>
             <div class="current-reviews">
                 <% if (title.reviews.length > 0) { %>
-                <h3>Current Reviews</h3>
+                <h3>Notes</h3>
                 <% for (let i=0; i < title.reviews.length; i++) { %>
                 <p><%= title.reviews[i].text%> - Rating: <%= title.reviews[i].rating %></p>
                 <% } %>

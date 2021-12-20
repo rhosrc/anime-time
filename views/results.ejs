@@ -8,7 +8,7 @@
     <div id="search">
       <% for (let i=0; i < results.length; i++) { %>
       <div class="card">
-        <h3><a href="/<%= results[i].title%>"><%= results[i].title%></a></h3>
+        <h3><a href="/search/<%= results[i].title%>"><%= results[i].title%></a></h3>
         <h4><%= results[i].type%></h4>
         <p><%= results[i].episodes%> episodes aired</p>
         <% if (results[i].airing === true) { %>
