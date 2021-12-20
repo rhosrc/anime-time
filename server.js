@@ -83,6 +83,12 @@ app.use(async function(req, res, next) {
 });
 
 
+app.use(function(req, res, next) {
+    console.log(req.session)
+    next();
+});
+
+
 // Mount routes
 
 app.use('/', collectedController);

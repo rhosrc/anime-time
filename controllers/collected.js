@@ -8,6 +8,7 @@ const axios = require('axios');
 // Create a router object
 
 const Title = require('../models/titles');
+const User = require('../models/user');
 
 const BASE_URL = 'https://api.jikan.moe/v3/search/anime?q='
 let animeInfo;
@@ -116,6 +117,15 @@ collectedRouter.post('/profile', function (req, res) {
     });
 })
 
+
+collectedRouter.post('/profile/:id', function(req, res) {
+    User.findById(req.session.user, function(err, user) {
+        user.titles.push(req.params.id);
+        user.save(function(err) {
+            res.redirect('/profile');
+        });
+    });
+});
 
 
 // NEW

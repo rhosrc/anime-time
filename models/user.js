@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     email: String,
     password: String,
-    profile: [{type: Schema.Types.ObjectId, ref:'Title'}],
+    titles: [{type: Schema.Types.ObjectId, ref:'Title'}],
 }, {timestamps: true});
 
 module.exports = mongoose.model('User', userSchema);
