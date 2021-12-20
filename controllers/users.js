@@ -37,9 +37,8 @@ usersRouter.post('/login', function (req, res) {
     })
 })
 
-usersRouter.get('/signup', async function (req, res) {
-    const user = await User.findById(req.session.user);
-    res.render('signup.ejs', { user });
+usersRouter.get('/signup', function (req, res) {
+    res.render('signup.ejs');
 });
 
 usersRouter.post ('/signup', async function (req, res) {
@@ -58,14 +57,12 @@ usersRouter.get('/logout', function (req, res) {
 });
 
 usersRouter.get('/profile', async function (req, res) {
-    const titles = await Title.find({});
     if (!req.session.user) return res.redirect('/login');
-    User.findById(req.session.user, function (error, user) {
+    User.findById(req.session.user).populate('titles').exec(function (error, user) {
         res.render('dashboard.ejs', {
             user, titles
         });
     });
-    console.log(titles);
 })
 
 // collectedRouter.post('/profile/:id/reviews', async function (req, res){
