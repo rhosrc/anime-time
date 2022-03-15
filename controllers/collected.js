@@ -7,9 +7,11 @@ const axios = require('axios');
 
 // Create a router object
 
-const Title = require('../models/titles');
+const Title = require('../models/title');
+const User = require('../models/user');
 
-const BASE_URL = 'https://api.jikan.moe/v3/search/anime?q='
+// const BASE_URL = 'https://api.jikan.moe/v3/search/anime?q='
+const BASE_URL = 'https://api.jikan.moe/v4/anime?q='
 let animeInfo;
 let foundTitle;
 
@@ -32,17 +34,16 @@ collectedRouter.get('/search', function (req, res, next) {
     // console.log(req.query.search);
     axios.get(BASE_URL + req.query.search)
         .then(response => {
-            animeInfo = response.data.results;
+            animeInfo = response.data.data;
             res.render('results.ejs', {
                 results: animeInfo
             });
         })
-
 })
 
 // Nested Resource Routes
 
-collectedRouter.post('/profile/:id/reviews', async function (req, res){
+collectedRouter.post('/profile/:id/reviews', async function (req, res) {
     // find the title we need to make a review for
     const title = await Title.findById(req.params.id);
     // insert req.body(our review) into the review array for the found title
@@ -53,13 +54,13 @@ collectedRouter.post('/profile/:id/reviews', async function (req, res){
     res.redirect(`/profile/${title._id}`);
 })
 
-collectedRouter.get('/profile', function (req, res) {
-    Title.find({}, function (error, allTitles) {
-        res.render('profile.ejs', {
-            titles: allTitles
-        })
-    })
-})
+// collectedRouter.get('/profile', function (req, res) {
+//     Title.find({}, function (error, allTitles) {
+//         res.render('profile.ejs', {
+//             titles: allTitles
+//         })
+//     })
+// })
 
 
 collectedRouter.delete('/profile/:id', function (req, res) {
@@ -77,7 +78,7 @@ collectedRouter.put('/profile/:id', function (req, res) {
         function (error, updatedTitle) {
             res.redirect(`/profile/${req.params.id}`)
         })
-        
+
 })
 
 
@@ -105,16 +106,30 @@ collectedRouter.get('/search/:id', function (req, res) {
         return e.title === req.params.id;
     })
     res.render('info.ejs', {
-        title: foundTitle
+        title: foundTitle, req: req.params.id
     });
+    console.log(req.params.id);
+    console.log(animeInfo)
 })
 
-
-collectedRouter.post('/profile', function (req, res) {
-    Title.create(foundTitle, function (error, createdTitle) {
-        res.redirect('/search')
-    });
+collectedRouter.post('/profile', function (req, res){
+    Title.create(foundTitle, function (error, createdTitle){
+        res.redirect('/search');
+    })
 })
+
+// create entry for profile title
+
+// collectedRouter.post('/profile/:id', function (req, res) {
+//     if(!req.session.user) return res.redirect('/login');
+//     console.log(req.session.user);
+//     User.findById(req.session.user, function (error, user) {
+//         user.titles.push(req.params.id);
+//         user.save(function (error) {
+//             res.redirect('/profile');
+//         });
+//     });
+// });
 
 
 

@@ -1,10 +1,13 @@
 const usersRouter = require('express').Router();
 const User = require('../models/user')
-const Title = require('../models/titles');
+const Title = require('../models/title');
 
 
 const bcrypt = require('bcrypt');
 const SALT_ROUNDS = 10;
+
+// const BASE_URL = 'https://api.jikan.moe/v4/anime?q=';
+// const axios = require('axios');
 
 
 usersRouter.get('/login', function (req, res) {
@@ -33,13 +36,12 @@ usersRouter.post('/login', function (req, res) {
         }
         // step 3 - assuming there is a match, we create a session and redirect to dashboard.
         req.session.user = foundUser._id;
-        res.redirect('/profile');
+        res.redirect('/');
     })
 })
 
-usersRouter.get('/signup', async function (req, res) {
-    const user = await User.findById(req.session.user);
-    res.render('signup.ejs', { user });
+usersRouter.get('/signup', function (req, res) {
+    res.render('signup.ejs');
 });
 
 usersRouter.post ('/signup', async function (req, res) {
@@ -58,15 +60,33 @@ usersRouter.get('/logout', function (req, res) {
 });
 
 usersRouter.get('/profile', async function (req, res) {
-    const titles = await Title.find({});
     if (!req.session.user) return res.redirect('/login');
-    User.findById(req.session.user, function (error, user) {
-        res.render('dashboard.ejs', {
-            user, titles
+    User.findById(req.session.user).populate('titles').exec(function (error, user) {
+        res.render('profile.ejs', {
+            user
         });
     });
-    console.log(titles);
 })
+
+
+// usersRouter.delete('/profile/:id', function (req, res) {
+
+// })
+
+usersRouter.post('/profile', async function (req, res) {
+    if (!req.session.user) return res.redirect('/users/login');
+    User.findById(req.session.user, function (error, user) {
+        // res.render('profile.ejs', {user});
+        // Title.find({mal_id: req.body.mal_id}, function (error, title) {
+        //     console.log(req.body);
+            // user.titles.push(title._id);
+            // user.save(function(){
+            //     res.redirect('/profile')
+            // })
+        // })
+    });
+})
+
 
 // collectedRouter.post('/profile/:id/reviews', async function (req, res){
 //     // find the title we need to make a review for
@@ -79,14 +99,14 @@ usersRouter.get('/profile', async function (req, res) {
 //     res.redirect(`/profile/${title._id}`);
 // })
 
-usersRouter.get('/profile', function (req, res) {
-    if(!req.session.user) return res.redirect('/login');
-    User.findById(req.session.user).populate('profile').exec(function (error, user){
-        res.render('profile.ejs', {
-            user,
-        })
-    })
-})
+// usersRouter.get('/profile', function (req, res) {
+//     if(!req.session.user) return res.redirect('/login');
+//     User.findById(req.session.user).populate('titles').exec(function (error, user){
+//         res.render('profile.ejs', {
+//             user,
+//         });
+//     });
+// })
 
 
 // collectedRouter.delete('/profile/:id', function (req, res) {
@@ -124,18 +144,30 @@ usersRouter.get('/profile', function (req, res) {
 //     })
 // })
 
-usersRouter.post('/profile', function (req, res) {
-    if(!req.session.user) return res.redirect('/login');
-    User.findById(req.session.user, function (error, user){
-        res.render('profile.ejs', {
-            user,
+// usersRouter.post('/search/:id', function (req, res) {
+//     if(!req.session.user) return res.redirect('/login');
+//     User.findById(req.session.user, function (error, user){
+//         res.render('profile.ejs', {
+//             user,
+//         })
+//     })
+//     Title.create(foundTitle, function (error, createdTitle) {
+//         res.redirect('/search')
+//     });
+// })
+
+// usersRouter.post('/profile', function (req, res) {
+//     if(!req.session.user) return res.redirect('/login');
+//     User.findById(req.session.user, function (error, user){
+//         res.render('profile.ejs', {
+//             user,
         
-        })
-    })
-    Title.create(foundTitle, function (error, createdTitle) {
-        res.redirect('/search')
-    });
-})
+//         })
+//     })
+//     Title.create(foundTitle, function (error, createdTitle) {
+//         res.redirect('/search')
+//     });
+// })
 
 
 module.exports = usersRouter;

@@ -1,7 +1,12 @@
 <nav class="navbar bg-light">
     <a class="navbar-brand" href="/">Anime Time</a>
-    <a class="nav-link" href="/profile">My Profile</a>
-    <a class="nav-link" href="/login">Log In</a>
+    <a class="nav-link" href="/users/profile">My Profile</a>
+    <% if(user) { %>
+        <a class="nav-link" href="/users/logout">Logout</a>
+    <% } else { %>
+        <a class="nav-link" href="/users/login">Log In</a>
+        <a class="nav-link" href="/users/signup">Signup</a>
+    <% } %>
     <form action="/search" method="GET" class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

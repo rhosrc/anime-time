@@ -86,7 +86,7 @@ app.use(async function(req, res, next) {
 // Mount routes
 
 app.use('/', collectedController);
-app.use('/', usersController);
+app.use('/users', usersController);
 
 
 // Listen

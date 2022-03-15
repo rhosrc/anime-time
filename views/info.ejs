@@ -7,13 +7,13 @@
     <main>
         
         <div class="info-div">
-            <img src="<%= title.image_url%>" alt="">
+            <img src="<%= title.images.jpg.image_url%>" alt="">
             <div class="info">
                 <h1><%= title.title%></h1>
                 <p><strong><%= title.type%></strong></p>
-                <p>Rated <strong><%= title.rated%></strong></p>
+                <p>Rated <strong><%= title.rating.split("-")[0]%></strong></p>
                 <p><%= title.synopsis%><a href="<%= title.url%>">Visit MyAnimeList</a></p>
-                <form action="/profile" method="POST">
+                <form action="/users/profile" method="POST">
                     <input class="btn btn-success" type="submit" value="Add to List">
                 </form>
                 <p><a class="btn btn-outline-dark" href="/search">Back to Search</a></p>

@@ -16,9 +16,16 @@ const reviewSchema = new Schema({
 const titleSchema = new Schema ({
     mal_id: Number,
     url: String,
-    image_url: String,
+    images: {
+        jpg: {
+            image_url: String
+        }
+    },
     title: String,
     airing: Boolean,
+    aired: {
+        string: String
+    },
     synopsis: String,
     type: String,
     episodes: Number,
@@ -26,7 +33,7 @@ const titleSchema = new Schema ({
     start_date: String,
     end_date: String,
     members: Number,
-    rated: String,
+    rating: String,
     reviewed: {type: Boolean, default: false},
     epsfinished: {type: Number, default: 0},
     reviews: [reviewSchema]

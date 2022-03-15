@@ -14,9 +14,9 @@
         <% if (results[i].airing === true) { %>
         <p>Still Airing</p>
         <% } else { %>
-        <p>Completed <%= new Date(results[i].end_date).toLocaleDateString('en-US')%></p>
+        <p>Aired <%= results[i].aired.string%></p>
         <% } %>
-        <img class="poster" src="<%= results[i].image_url%>" alt="">
+        <img class="poster" src="<%= results[i].images.jpg.image_url%>" alt="">
       </div>
 
       <% } %>

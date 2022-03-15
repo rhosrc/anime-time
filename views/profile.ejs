@@ -6,16 +6,17 @@
     <%- include('./partials/navbar.ejs') %>
     <main>
         <h1>PROFILE</h1>
-        <% for (let i=0; i < titles.length; i++ ) { %>
+        <h2>Welcome, <%= user.email.split('@')[0]%>!</h2>
+        <% for (let i=0; i < user.titles.length; i++ ) { %>
         <div class="saved">
-            <img src="<%= titles[i].image_url%>" alt="">
-            <h3><a href="profile/<%= titles[i]._id%>"><%= titles[i].title%></a></h3>
-            <p><%= titles[i].epsfinished%> episodes of <%= titles[i].episodes%> watched</p>
-            <form style="display: inline; margin-right: 1rem;" action="/profile/<%= titles[i]._id%>?_method=DELETE"
+            <img src="<%= user.titles[i].image_url%>" alt="">
+            <h3><a href="users/profile/<%= user.titles[i]._id%>"><%= user.titles[i].title%></a></h3>
+            <p><%= user.titles[i].epsfinished%> episodes of <%= user.titles[i].episodes%> watched</p>
+            <form style="display: inline; margin-right: 1rem;" action="users/profile/<%= user.titles[i]._id%>?_method=DELETE"
                 method="POST">
                 <input class="btn btn-danger" type="submit" value="DELETE">
             </form>
-            <a class="btn btn-secondary" style="margin: 0 1rem 0 1rem;" href="/profile/<%= titles[i]._id %>/edit">EDIT</a>
+            <a class="btn btn-secondary" style="margin: 0 1rem 0 1rem;" href="users/profile/<%= user.titles[i]._id %>/edit">EDIT</a>
         </div>
         <% } %>
         <p><a class="btn btn-outline-dark" href="/search">Back to Search</a></p>
